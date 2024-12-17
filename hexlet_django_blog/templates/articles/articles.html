@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{% url 'article_create' %}">Create article</a>
+    <h1>Список статей</h1>
+    {% for article in articles %}
+        <h2><a href="{% url 'article_detail' id=article.id %}">{{ article.name }}</a></h2>
+        <a href="{% url 'article_update' id=article.id %}">Редактировать</a>
+        <form action="{% url 'article_delete' article.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить">
+        </form>
+    {% endfor %}
+
+{% endblock content %}

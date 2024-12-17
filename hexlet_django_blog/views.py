@@ -1,10 +1,9 @@
 from django.shortcuts import render
+from django.views.generic.base import TemplateView
 
 
-def index(request):
-    # context = {'who': 'World'}
-    # return render(request, 'index.html', context)
-    return render(request, 'base.html')
+class HomePageView(TemplateView):
+    template_name = 'base.html'
 
 
 def about(request):
